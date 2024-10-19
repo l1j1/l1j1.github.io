@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="just some tings">
 <meta property="og:type" content="website">
-<meta property="og:title" content="L1j1">
-<meta property="og:url" content="https://l1j1.github.io/archives/2024/10/index.html">
+<meta property="og:title" content="search">
+<meta property="og:url" content="https://l1j1.github.io/search/index.html">
 <meta property="og:site_name" content="L1j1">
 <meta property="og:description" content="just some tings">
 <meta property="og:locale" content="zn_CH">
+<meta property="article:published_time" content="2024-10-19T13:13:28.719Z">
+<meta property="article:modified_time" content="2024-10-19T13:13:28.719Z">
 <meta property="article:author" content="L1j1">
 <meta property="article:tag" content="PenetrationTesting redteam">
 <meta name="twitter:card" content="summary">
@@ -35,7 +37,7 @@
       
     
     <!-- title -->
-    <title>Articles: 2024/10</title>
+    <title>search</title>
     <!-- async scripts -->
     <!-- Google Analytics -->
 
@@ -92,90 +94,22 @@
 </header>
 
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <li class="post-year"><h2>2024</h2></li>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2024-10-19T12:48:55.282Z" class="dt-published" itemprop="datePublished">2024-10-19</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2024/10/19/%E7%86%9F%E7%BB%83%E5%88%A9%E7%94%A8google,shodan%E5%8F%8Abing%20hacking%E8%BE%85%E5%8A%A9%E5%BF%AB%E9%80%9F%E6%B8%97%E9%80%8F%5B%E4%B8%BB%E8%A6%81%E9%92%88%E5%AF%B9%E5%A4%A7%E5%9E%8B%E7%9B%AE%E6%A0%87%5D/">Untitled</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2024-10-19T12:48:55.275Z" class="dt-published" itemprop="datePublished">2024-10-19</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2024/10/19/%E6%94%B6%E9%9B%86%E5%B8%96%EF%BC%9AGithub%E7%BA%A2%E9%98%9F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%20%E6%94%B6%E9%9B%86%EF%BC%882023%E5%B9%B47%E6%9C%8818%E6%97%A5%E6%9B%B4%E6%96%B0%EF%BC%89/">Untitled</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2024-10-17T23:54:15.399Z" class="dt-published" itemprop="datePublished">2024-10-18</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2024/10/18/hello-world/">Hello World</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   
 
-</div>
+  <div class="content" itemprop="articleBody">
+      
+        <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="Buscar...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No s&#39;han trobat resultats.</p>
+</section>
+
+      
+  </div>
+</article>
 
         
         <footer id="footer">
@@ -226,6 +160,45 @@
 <script src="/js/main.js"></script>
 
 <!-- search -->
+
+  
+<script src="/js/search.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+
+    var $inputArea = $("input#search-input");
+    var $resultArea = document.querySelector("div#search-result");
+
+    $inputArea.focus(function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    });
+
+    $inputArea.keydown(function(e) {
+      if (e.which == 13) {
+        e.preventDefault();
+      }
+    });
+
+    var observer = new MutationObserver(function(mutationsList, observer) {
+      if (mutationsList.length == 1) {
+        if (mutationsList[0].addedNodes.length) {
+          $(".search-no-result").hide();
+        } else if (mutationsList[0].removedNodes.length) {
+          $(".search-no-result").show(200);
+        }
+      }
+    });
+
+    observer.observe($resultArea, { childList: true });
+
+  });
+  </script>
 
 <!-- Baidu Analytics -->
 
